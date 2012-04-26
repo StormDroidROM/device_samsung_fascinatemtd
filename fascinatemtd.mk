@@ -218,6 +218,15 @@ endif
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
 
+ifeq ($(TARGET_PREBUILT_RECOVERY),)
+    LOCAL_RECOVERY := device/samsung/fascinatemtd/ramdisk-recovery.img
+else
+    LOCAL_RECOVERY := $(TARGET_PREBUILT_RECOVERY)
+endif
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_RECOVERY):ramdisk-recovery.img
+
 PRODUCT_COPY_FILES += \
     device/samsung/aries-common/updater.sh:updater.sh
 
